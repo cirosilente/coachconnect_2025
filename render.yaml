@@ -8,7 +8,7 @@ services:
   - type: web
     name: laravel-app
     # env: php ---prima c'era questo
-    runtime: php
+    runtime: docker
     plan: free
     buildCommand: |
       composer install
