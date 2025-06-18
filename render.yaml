@@ -9,6 +9,7 @@ services:
     name: laravel-app
     # env: php ---prima c'era questo
     runtime: docker
+    dockerfilePath: ./Dockerfile
     plan: free
     buildCommand: |
       composer install
