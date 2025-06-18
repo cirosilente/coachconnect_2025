@@ -1,21 +1,9 @@
-databases:
-  - name: laravel-mysql
-    databaseName: laravel_db
-    user: laravel_user
-    plan: free
-
 services:
   - type: web
     name: laravel-app
-    # env: php ---prima c'era questo
-    runtime: docker
-    dockerfilePath: ./Dockerfile
+    env: docker
     plan: free
-    buildCommand: |
-      composer install
-      php artisan config:clear
-      php artisan migrate --force
-    startCommand: php artisan serve --host=0.0.0.0 --port=10000
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_ENV
         value: production
@@ -43,3 +31,9 @@ services:
           name: laravel-mysql
           property: password
         key: DB_PASSWORD
+
+databases:
+  - name: laravel-mysql
+    databaseName: laravel_db
+    user: laravel_user
+    plan: free
