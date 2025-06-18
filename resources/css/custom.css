@@ -1,0 +1,31 @@
+/* Stili base */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media query per tablet */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    .lead {
+        font-size: 1.1rem;
+    }
+    .container.px-5 {
+        padding: 1rem !important;
+    }
+}
+
+/* Media query per smartphone */
+@media (max-width: 576px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    .lead {
+        font-size: 1rem;
+    }
+    .overflow-hidden {
+        max-height: 60vh;
+    }
+}

@@ -1,0 +1,87 @@
+.image-container {
+    max-width: 100%;
+    padding: 15px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    padding-top: 80px; /* Aumentato lo spazio per evitare sovrapposizioni */
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    z-index: 1030;
+    background-color: rgba(255, 255, 255, 0.95) !important; /* Sfondo leggermente trasparente */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo section */
+.navbar-brand {
+    flex: 0 0 20%;
+    text-align: left;
+}
+
+/* Central menu section */
+.navbar .navbar-nav:not(.ml-auto) {
+    flex: 0 0 60%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Auth menu section (login/register) */
+.navbar-nav.ml-auto {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Remove conflicting styles */
+.navbar-nav {
+    width: auto;
+    margin: 0;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    padding-top: 100px; /* Spazio per il contenuto principale */
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 32px;
+    }
+    
+    .lead {
+        font-size: 16px;
+        padding: 0 15px;
+    }
+    
+    .image-container {
+        padding: 5px;
+    }
+
+    body {
+        padding-top: 100px; /* Spazio ridotto su mobile ma sempre sufficiente */
+    }
+}
+
+@media (max-width: 576px) {
+    .display-4 {
+        font-size: 35px;
+    }
+    
+    .lead {
+        font-size: 16px;
+    }
+}
