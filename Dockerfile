@@ -18,9 +18,6 @@ RUN npm install && npm run build
 
 RUN php artisan config:clear
 RUN touch .env && php artisan key:generate
-RUN php artisan migrate --force || true
-
-
 RUN chmod -R 775 storage bootstrap/cache
 EXPOSE 8080
 
