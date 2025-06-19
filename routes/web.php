@@ -17,16 +17,6 @@ Route::get('/gym', function () {
     return view('gym');
 });
 
-//rotta temporanea
-Route::get('/db-check', function () {
-    try {
-        \DB::connection()->getPdo();
-        return '✅ Connessione al database riuscita!';
-    } catch (\Exception $e) {
-        return '❌ Errore: ' . $e->getMessage();
-    }
-}); 
-
 
 //Authentication:
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
