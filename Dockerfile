@@ -21,4 +21,7 @@ RUN cp .env.example .env && php artisan key:generate
 RUN php artisan migrate --force || true
 
 EXPOSE 8080
+
+RUN chmod -R 775 storage bootstrap/cache
 CMD php artisan serve --host=0.0.0.0 --port=8080
+
