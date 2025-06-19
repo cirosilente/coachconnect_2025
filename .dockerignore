@@ -6,11 +6,8 @@
 vendor/
 node_modules/
 
-# Ignora le cartelle temporanee di Laravel
-storage/logs/
-storage/framework/cache/
-storage/framework/sessions/
-storage/framework/views/
+
+
 
 # Ignora i file di configurazione locali
 Homestead.json
