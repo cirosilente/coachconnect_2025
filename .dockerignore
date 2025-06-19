@@ -1,0 +1,38 @@
+# Ignora l’ambiente di sviluppo
+.env
+.env.*
+
+# Ignora vendor (verrà generato dentro Docker)
+vendor/
+node_modules/
+
+# Ignora le cartelle temporanee di Laravel
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# Ignora i file di configurazione locali
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+composer.lock
+
+# Ignora roba di git
+.git
+.gitignore
+
+# Cache varie
+.DS_Store
+*.swp
+.idea/
+.vscode/
+*.log
+*.zip
+
+# Build pubblici (già generati da vite)
+public/hot
+public/storage
+public/mix-manifest.json
