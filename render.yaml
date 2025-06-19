@@ -1,41 +1,38 @@
 services:
   - type: web
-    name: laravel-app
+    name: coachconnect-2025
     env: docker
     plan: free
     dockerfilePath: ./Dockerfile
+    autoDeploy: true
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: false
+      - key: APP_URL
+        value: https://coachconnect-2025.onrender.com
       - key: APP_KEY
         generateValue: true
       - key: DB_CONNECTION
         value: mysql
-      - fromDatabase:
-          name: laravel-mysql
-          property: host
-        key: DB_HOST
-      - fromDatabase:
-          name: laravel-mysql
-          property: port
-        key: DB_PORT
-      - fromDatabase:
-          name: laravel-mysql
-          property: database
-        key: DB_DATABASE
-      - fromDatabase:
-          name: laravel-mysql
-          property: user
-        key: DB_USERNAME
-      - fromDatabase:
-          name: laravel-mysql
-          property: password
-        key: DB_PASSWORD
-
-databases:
-  - name: laravel-mysql
-    databaseName: laravel_db
-    user: laravel_user
-    plan: free
+      - key: DB_HOST
+        value: mysql-infobasic-ciro-3148.g.aivencloud.com
+      - key: DB_PORT
+        value: 10367
+      - key: DB_DATABASE
+        value: defaultdb
+      - key: DB_USERNAME
+        value: avnadmin
+      - key: DB_PASSWORD
+        value: 
+      - key: DB_MYSQL_ATTR_SSL_CA
+        value: /etc/ssl/certs/ca-certificates.crt
+      - key: SESSION_DRIVER
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: CACHE_DRIVER
+        value: file
+      - key: FILESYSTEM_DISK
+        value: local
