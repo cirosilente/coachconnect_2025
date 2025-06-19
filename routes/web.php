@@ -5,7 +5,18 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/db-check', function () {
+    try {
+        DB::connection()->getPdo();
+        return '✅ Connessione al DB Aiven riuscita!';
+    } catch (\Exception $e) {
+        return '❌ Errore DB: ' . $e->getMessage();
+    }
+});
+
 
 Route::get('/', function () {
     return view('welcome');
