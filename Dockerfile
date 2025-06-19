@@ -26,10 +26,13 @@ RUN php artisan config:clear
 RUN php artisan key:generate --force
 
 # Permessi corretti per Laravel
-RUN chmod -R 775 storage bootstrap/cache
+RUN mkdir -p storage/framework/views && \
+    chmod -R 775 storage bootstrap/cache
 
 EXPOSE 8080
 
 # Avvia il server e l'applicazione Laravel
 CMD php artisan migrate:fresh --seed --force || true && \
     php artisan serve --host=0.0.0.0 --port=8080
+
+    
