@@ -6,9 +6,6 @@
 vendor/
 node_modules/
 
-
-
-
 # Ignora i file di configurazione locali
 Homestead.json
 Homestead.yaml
