@@ -20,12 +20,11 @@ RUN php artisan config:clear
 RUN cp .env.example .env && php artisan key:generate
 RUN php artisan migrate --force || true
 
-EXPOSE 8080
 
 RUN chmod -R 775 storage bootstrap/cache
-
-# Esegui le migration fresche con seed
-RUN php artisan migrate:fresh --seed --force || true
-
 EXPOSE 8080
-CMD php artisan serve --host=0.0.0.0 --port=8080
+
+# Ripulisco e poi faccio la migration e seeder
+CMD php artisan config:clear && \
+    php artisan migrate:fresh --seed --force || true && \
+    php artisan serve --host=0.0.0.0 --port=8080
