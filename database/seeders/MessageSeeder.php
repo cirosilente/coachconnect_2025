@@ -10,12 +10,29 @@ class MessageSeeder extends Seeder
 {
     public function run(): void
     {
-        $users = User::all();
+        // Prendi uno o più admin
+        $admins = User::where('role', 'admin')->get();
 
-        foreach ($users as $user) {
-            Message::factory()->count(2)->create([
-                'user_id' => $user->id,
-            ]);
+        // Prendi tutti gli utenti normali
+        $users = User::where('role', 'user')->get();
+
+        // Ogni admin scrive al primo utente disponibile
+        foreach ($admins as $admin) {
+            foreach ($users as $user) {
+                // 1. Admin scrive per primo
+                Message::create([
+                    'sender_id' => $admin->id,
+                    'receiver_id' => $user->id,
+                    'content' => 'Benvenuto! Se hai domande, scrivimi pure!',
+                ]);
+
+                // 2. Utente risponde
+                Message::create([
+                    'sender_id' => $user->id,
+                    'receiver_id' => $admin->id,
+                    'content' => 'Grazie! Felice di iniziare questo percorso.',
+                ]);
+            }
         }
     }
 }
