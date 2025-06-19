@@ -1,27 +1,24 @@
 FROM php:8.2-fpm
 
+# Dependencies
 RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    curl \
-    git \
-    libzip-dev \
+    libpng-dev libjpeg-dev libonig-dev libxml2-dev \
+    zip unzip curl git libzip-dev nodejs npm \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
 COPY . .
 
-# Installa Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
+RUN npm install && npm run build
 
-RUN chmod -R 775 storage bootstrap/cache
-
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080
+RUN php artisan config:clear
+RUN php artisan key:generate
+RUN php artisan migrate --force || true
 
 EXPOSE 8080
+CMD php artisan serve --host=0.0.0.0 --port=8080
