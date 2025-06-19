@@ -5,32 +5,32 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Message;
 use App\Models\User;
+use App\Enums\Role;
 
 class MessageSeeder extends Seeder
 {
     public function run(): void
     {
-        // Prendi uno o più admin
-        $admins = User::where('role', 'admin')->get();
+        // Prendi tutti gli admin
+        $admins = User::where('role', Role::ADMIN)->get();
 
         // Prendi tutti gli utenti normali
-        $users = User::where('role', 'user')->get();
+        $users = User::where('role', Role::USER)->get();
 
-        // Ogni admin scrive al primo utente disponibile
         foreach ($admins as $admin) {
             foreach ($users as $user) {
-                // 1. Admin scrive per primo
+                // Admin invia il primo messaggio
                 Message::create([
                     'sender_id' => $admin->id,
                     'receiver_id' => $user->id,
                     'content' => 'Benvenuto! Se hai domande, scrivimi pure!',
                 ]);
 
-                // 2. Utente risponde
+                // L'utente risponde all'admin
                 Message::create([
                     'sender_id' => $user->id,
                     'receiver_id' => $admin->id,
-                    'content' => 'Grazie! Felice di iniziare questo percorso.',
+                    'content' => 'Grazie mille!',
                 ]);
             }
         }

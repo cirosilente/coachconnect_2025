@@ -14,7 +14,8 @@ class UserSeeder extends Seeder
         // Utente admin di test
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'admin@example.com',
+            'role' => 'admin', // Usa una stringa
         ]);
     }
 }
