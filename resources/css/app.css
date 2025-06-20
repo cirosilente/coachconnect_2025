@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 /* Se hai questi file, ok. Altrimenti rimuovili */
 @import "bootstrap/dist/css/bootstrap.min.css";
