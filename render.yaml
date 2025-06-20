@@ -36,3 +36,5 @@ services:
         value: file
       - key: FILESYSTEM_DISK
         value: local
+
+        buildCommand: npm install && npm run build
