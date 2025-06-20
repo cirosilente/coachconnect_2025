@@ -7,7 +7,7 @@
     
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    
 </head>
 <body>
 @if(!Auth::check())
